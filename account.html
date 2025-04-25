@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - ShopEasy</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <i class="fas fa-shopping-bag text-primary me-2"></i>
+          <span class="fw-bold">ShopEasy</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu" id="categories-dropdown">
+                <!-- Categories loaded dynamically -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <form class="d-flex me-3 search-form">
+            <input class="form-control me-2" type="search" id="search-input" placeholder="Search products...">
+            <button class="btn btn-outline-primary" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          
+          <div class="d-flex align-items-center">
+            <div class="dropdown me-3">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-user-circle fs-5"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" id="user-dropdown">
+                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                <li><a class="dropdown-item" href="register.html">Register</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-none" id="account-link" href="account.html">My Account</a></li>
+                <li><a class="dropdown-item d-none" id="orders-link" href="orders.html">My Orders</a></li>
+                <li><a class="dropdown-item d-none" id="logout-button" href="#">Logout</a></li>
+              </ul>
+            </div>
+            
+            <a href="cart.html" class="position-relative me-3 nav-link">
+              <i class="fas fa-shopping-cart fs-5"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="breadcrumb-section py-3 bg-light mt-5">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">My Account</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Account Section -->
+  <section class="account-section py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Account Sidebar -->
+        <div class="col-lg-3 mb-4 mb-lg-0">
+          <div class="account-sidebar mb-4">
+            <h4 class="mb-4">Welcome, <span id="user-name">User</span></h4>
+            
+            <div class="list-group">
+              <a href="#profile" class="account-menu-item active" data-bs-toggle="pill">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+              </a>
+              <a href="#addresses" class="account-menu-item" data-bs-toggle="pill">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Addresses</span>
+              </a>
+              <a href="orders.html" class="account-menu-item">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Orders</span>
+              </a>
+              <a href="#" class="account-menu-item" id="logout-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Account Content -->
+        <div class="col-lg-9">
+          <div class="tab-content">
+            <!-- Profile Tab -->
+            <div class="tab-pane fade show active" id="profile">
+              <div class="card border-0 shadow-sm">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h4 class="mb-0">Edit Profile</h4>
+                </div>
+                <div class="card-body">
+                  <form id="profile-form">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                      </div>
+                      
+                      <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+              <div class="card border-0 shadow-sm mt-4">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h4 class="mb-0">Change Password</h4>
+                </div>
+                <div class="card-body">
+                  <form id="password-form">
+                    <div class="row g-3">
+                      <div class="col-12">
+                        <label for="currentPassword" class="form-label">Current Password</label>
+                        <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                        <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" required>
+                      </div>
+                      
+                      <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Addresses Tab -->
+            <div class="tab-pane fade" id="addresses">
+              <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h4 class="mb-0">My Addresses</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row g-4 mb-4" id="addresses-container">
+                    <!-- Addresses loaded dynamically -->
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card border-0 shadow-sm">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h4 class="mb-0">Add New Address</h4>
+                </div>
+                <div class="card-body">
+                  <form id="address-form">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="addressType" class="form-label">Address Type</label>
+                        <select class="form-select" id="addressType" name="addressType" required>
+                          <option value="">Select Type</option>
+                          <option value="billing">Billing</option>
+                          <option value="shipping">Shipping</option>
+                        </select>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <label for="isDefault" class="form-label">Set as Default</label>
+                        <div class="form-check mt-2">
+                          <input class="form-check-input" type="checkbox" id="isDefault" name="isDefault">
+                          <label class="form-check-label" for="isDefault">
+                            Make this my default address
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="address2" class="form-label">Address 2 (Optional)</label>
+                        <input type="text" class="form-control" id="address2" name="address2">
+                      </div>
+                      
+                      <div class="col-md-5">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="city" required>
+                      </div>
+                      
+                      <div class="col-md-4">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="state" name="state" required>
+                      </div>
+                      
+                      <div class="col-md-3">
+                        <label for="zip" class="form-label">Zip</label>
+                        <input type="text" class="form-control" id="zip" name="zip" required>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="country" class="form-label">Country</label>
+                        <select class="form-select" id="country" name="country" required>
+                          <option value="">Select Country</option>
+                          <option value="United States">United States</option>
+                          <option value="Canada">Canada</option>
+                          <option value="United Kingdom">United Kingdom</option>
+                          <option value="Australia">Australia</option>
+                          <option value="Germany">Germany</option>
+                          <option value="France">France</option>
+                          <option value="Japan">Japan</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      
+                      <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-primary">Save Address</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h5 class="fw-bold mb-3">ShopEasy</h5>
+          <p class="mb-4">Your trusted destination for high-quality products at competitive prices. Shop smart with ShopEasy.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-white-50 hover-white">Home</a></li>
+            <li class="mb-2"><a href="shop.html" class="text-decoration-none text-white-50 hover-white">Shop</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-white-50 hover-white">About Us</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-decoration-none text-white-50 hover-white">Contact</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-white-50 hover-white">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3">Account</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="login.html" class="text-decoration-none text-white-50 hover-white">Login</a></li>
+            <li class="mb-2"><a href="register.html" class="text-decoration-none text-white-50 hover-white">Register</a></li>
+            <li class="mb-2"><a href="account.html" class="text-decoration-none text-white-50 hover-white">My Account</a></li>
+            <li class="mb-2"><a href="orders.html" class="text-decoration-none text-white-50 hover-white">Order History</a></li>
+            <li class="mb-2"><a href="wishlist.html" class="text-decoration-none text-white-50 hover-white">Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <h5 class="fw-bold mb-3">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Commerce Street, New York, NY 10001</li>
+            <li class="mb-2"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i> support@shopeasy.com</li>
+          </ul>
+          
+          <h5 class="fw-bold mb-3 mt-4">We Accept</h5>
+          <div class="payment-methods">
+            <i class="fab fa-cc-visa me-2 fs-3"></i>
+            <i class="fab fa-cc-mastercard me-2 fs-3"></i>
+            <i class="fab fa-cc-amex me-2 fs-3"></i>
+            <i class="fab fa-cc-paypal fs-3"></i>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="my-4 bg-secondary">
+      
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2023 ShopEasy. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+            <li class="list-inline-item ms-3"><a href="#" class="text-white-50 text-decoration-none">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notifications -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+    <div id="toast-container"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  
+  <script>
+    // Additional script for account page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle logout link
+      const logoutLink = document.getElementById('logout-link');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+          event.preventDefault();
+          if (confirm('Are you sure you want to log out?')) {
+            Auth.logout();
+            window.location.href = 'index.html';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

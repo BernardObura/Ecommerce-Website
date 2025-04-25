@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy - Online Shopping Made Simple</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <i class="fas fa-shopping-bag text-primary me-2"></i>
+          <span class="fw-bold">ShopEasy</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                Categories
+              </a>
+              <ul class="dropdown-menu" id="categories-dropdown">
+                <!-- Categories loaded dynamically -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <form class="d-flex me-3 search-form">
+            <input class="form-control me-2" type="search" id="search-input" placeholder="Search products...">
+            <button class="btn btn-outline-primary" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          
+          <div class="d-flex align-items-center">
+            <div class="dropdown me-3">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-user-circle fs-5"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" id="user-dropdown">
+                <li><a class="dropdown-item" href="login.html">Login</a></li>
+                <li><a class="dropdown-item" href="register.html">Register</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item d-none" id="account-link" href="account.html">My Account</a></li>
+                <li><a class="dropdown-item d-none" id="orders-link" href="orders.html">My Orders</a></li>
+                <li><a class="dropdown-item d-none" id="logout-button" href="#">Logout</a></li>
+              </ul>
+            </div>
+            
+            <a href="cart.html" class="position-relative me-3 nav-link">
+              <i class="fas fa-shopping-cart fs-5"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section pt-5 mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="display-4 fw-bold mb-3">Shop Smarter, Not Harder</h1>
+          <p class="lead mb-4">
+            Discover the best products at the best prices. At ShopEasy, we bring you a curated selection
+            of high-quality items with fast shipping and excellent customer service.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="shop.html" class="btn btn-primary btn-lg rounded-pill">
+              Shop Now <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            <a href="#featured" class="btn btn-outline-primary btn-lg rounded-pill">
+              Featured Products
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-image-container text-center">
+            <img src="img/hero-image.jpg" alt="Online Shopping" class="img-fluid rounded-3 shadow-lg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section py-5">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold">Shop by Category</h2>
+        <p class="text-muted">Browse our wide selection of products by category</p>
+      </div>
+      
+      <div class="row g-4" id="categories-container">
+        <!-- Categories loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section id="featured" class="featured-products-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold">Featured Products</h2>
+        <p class="text-muted">Handpicked items from our collection</p>
+      </div>
+      
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="featured-products-container">
+        <!-- Featured products loaded dynamically -->
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="shop.html" class="btn btn-primary rounded-pill px-4">
+          View All Products <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 text-center">
+        <div class="col">
+          <div class="benefit-card p-4 h-100">
+            <div class="benefit-icon mb-3">
+              <i class="fas fa-truck-fast text-primary fa-3x"></i>
+            </div>
+            <h5 class="fw-bold">Free & Fast Shipping</h5>
+            <p class="text-muted mb-0">On orders over $50</p>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="benefit-card p-4 h-100">
+            <div class="benefit-icon mb-3">
+              <i class="fas fa-shield-halved text-primary fa-3x"></i>
+            </div>
+            <h5 class="fw-bold">Secure Payments</h5>
+            <p class="text-muted mb-0">100% secure checkout</p>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="benefit-card p-4 h-100">
+            <div class="benefit-icon mb-3">
+              <i class="fas fa-rotate-left text-primary fa-3x"></i>
+            </div>
+            <h5 class="fw-bold">Easy Returns</h5>
+            <p class="text-muted mb-0">30 day return policy</p>
+          </div>
+        </div>
+        
+        <div class="col">
+          <div class="benefit-card p-4 h-100">
+            <div class="benefit-icon mb-3">
+              <i class="fas fa-headset text-primary fa-3x"></i>
+            </div>
+            <h5 class="fw-bold">24/7 Support</h5>
+            <p class="text-muted mb-0">Dedicated customer service</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Arrivals Section -->
+  <section class="new-arrivals-section py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-5">
+        <h2 class="fw-bold">New Arrivals</h2>
+        <p class="text-muted">The latest additions to our store</p>
+      </div>
+      
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="new-arrivals-container">
+        <!-- New arrivals loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h3 class="fw-bold mb-3">Subscribe to Our Newsletter</h3>
+          <p class="mb-4">Get the latest updates, offers and special announcements delivered directly to your inbox.</p>
+          
+          <form class="newsletter-form">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control" placeholder="Your Email Address" required>
+              <button class="btn btn-light" type="submit">Subscribe</button>
+            </div>
+            <div class="form-text text-white-50">We respect your privacy. Unsubscribe at any time.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h5 class="fw-bold mb-3">ShopEasy</h5>
+          <p class="mb-4">Your trusted destination for high-quality products at competitive prices. Shop smart with ShopEasy.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-decoration-none text-white-50 hover-white">Home</a></li>
+            <li class="mb-2"><a href="shop.html" class="text-decoration-none text-white-50 hover-white">Shop</a></li>
+            <li class="mb-2"><a href="about.html" class="text-decoration-none text-white-50 hover-white">About Us</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-decoration-none text-white-50 hover-white">Contact</a></li>
+            <li class="mb-2"><a href="faq.html" class="text-decoration-none text-white-50 hover-white">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-6">
+          <h5 class="fw-bold mb-3">Account</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="login.html" class="text-decoration-none text-white-50 hover-white">Login</a></li>
+            <li class="mb-2"><a href="register.html" class="text-decoration-none text-white-50 hover-white">Register</a></li>
+            <li class="mb-2"><a href="account.html" class="text-decoration-none text-white-50 hover-white">My Account</a></li>
+            <li class="mb-2"><a href="orders.html" class="text-decoration-none text-white-50 hover-white">Order History</a></li>
+            <li class="mb-2"><a href="wishlist.html" class="text-decoration-none text-white-50 hover-white">Wishlist</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <h5 class="fw-bold mb-3">Contact Us</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Commerce Street, New York, NY 10001</li>
+            <li class="mb-2"><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+            <li class="mb-2"><i class="fas fa-envelope me-2"></i> support@shopeasy.com</li>
+          </ul>
+          
+          <h5 class="fw-bold mb-3 mt-4">We Accept</h5>
+          <div class="payment-methods">
+            <i class="fab fa-cc-visa me-2 fs-3"></i>
+            <i class="fab fa-cc-mastercard me-2 fs-3"></i>
+            <i class="fab fa-cc-amex me-2 fs-3"></i>
+            <i class="fab fa-cc-paypal fs-3"></i>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="my-4 bg-secondary">
+      
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; <span id="mySpan"></span> ShopEasy. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+            <li class="list-inline-item ms-3"><a href="#" class="text-white-50 text-decoration-none">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Cart Fab Button (for small screens) -->
+  <div class="mobile-cart-fab d-md-none">
+    <a href="cart.html" class="btn btn-primary rounded-circle shadow">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">0</span>
+    </a>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
+    <div id="toast-container"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
